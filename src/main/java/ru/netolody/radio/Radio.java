@@ -3,8 +3,15 @@ package ru.netolody.radio;
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private int maxStation;
 
+    public Radio () {
+        this.maxStation = 9;
+    }
 
+    public Radio(int quantityStations) {
+        this.maxStation = quantityStations - 1;
+    }
     public int getCurrentStation() {
         return currentStation;
     }
@@ -13,15 +20,15 @@ public class Radio {
         if (currentStation < 0) {
             return;
         }
-        if (currentStation > 9) {
+        if (currentStation > maxStation) {
             return;
         }
         this.currentStation = currentStation;
     }
 
     public void next() {
-        if (currentStation < 9) {
-            currentStation ++;
+        if (currentStation < maxStation) {
+            currentStation++;
         } else {
             currentStation = 0;
         }
@@ -30,9 +37,9 @@ public class Radio {
 
     public void prev() {
         if (currentStation > 0) {
-            currentStation --;
+            currentStation--;
         } else {
-            currentStation = 9;
+            currentStation = maxStation;
         }
 
     }
@@ -45,21 +52,21 @@ public class Radio {
         if (currentVolume < 0) {
             return;
         }
-        if (currentVolume > 10) {
+        if (currentVolume > 100) {
             return;
         }
         this.currentVolume = currentVolume;
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
-            currentVolume ++;
+        if (currentVolume < 100) {
+            currentVolume++;
         }
     }
 
-    public  void decreaseVolume() {
+    public void decreaseVolume() {
         if (currentVolume > 0) {
-            currentVolume --;
+            currentVolume--;
         }
     }
 }
